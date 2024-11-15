@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id                      Int @id @default(autoincrement())
+  email                   String
+  phone                   String @db.VarChar(15)
+  password                String
+  type                    Int @db.TinyInt @default(1)
+  is_active               Int @db.TinyInt @default(1)
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model siteSettings{
+  id                      Int @id @default(autoincrement())
+  logo                    String?
+  favicon                 String?
+  address                 String? @db.Text
+  phone                   String? @db.VarChar(50)
+  email                   String?
+  google_map              String? @db.Text
+  whatsapp                String? @db.VarChar(50)
+  whatsapp_live           Int @db.TinyInt @default(0)
+  maintenance_mode        Int @db.TinyInt @default(0)
+  maintenance_text        String? @db.LongText
+  currency                String?
+  currency_symbol         String?
+  is_change_cart_currency Int @db.TinyInt @default(0)
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model footerSettings{
+  id                      Int @id @default(autoincrement())
+  logo                    String?
+  footer_text             String? @db.Text
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model socialMedia{
+  id                      Int @id @default(autoincrement())
+  facebook                String?
+  instagram               String?
+  twitter                 String?
+  linkedin                String?
+  youtube                 String?
+  pinterest               String?
+  tiktok                  String?
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model seoSettings{
+  id                      Int @id @default(autoincrement())
+  site_title              String?
+  keywords                String? @db.Text
+  description             String? @db.Text
+  page_title              Int @db.TinyInt @default(1)
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model emailSettings{
+  id                      Int @id @default(autoincrement())
+  host                    String?
+  port                    Int?
+  secure                  Int @db.TinyInt @default(1)
+  user                    String?
+  pass                    String?
+  is_using                Int @db.TinyInt @default(0)
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model blog{
+  id                      Int @id @default(autoincrement())
+  title                   String?
+  slug                    String?
+  image                   String?
+  description             String? @db.Text
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model sliders {
+  id                      Int @id @default(autoincrement())
+  title                   String?
+  image                   String?
+  description             String? @db.Text
+  link                    String?
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model portfolio{
+  id                      Int @id @default(autoincrement())
+  title                   String?
+  slug                    String?
+  description             String? @db.Text
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model portfolioImages{
+  id                      Int @id @default(autoincrement())
+  portfolio_id            Int
+  image                   String?
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model whoWeAre {
+  id                      Int @id @default(autoincrement())
+  title                   String?
+  description             String? @db.Text
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
+
+model ourSkills {
+  id                      Int @id @default(autoincrement())
+  title                   String?
+  created_at              DateTime? @default(now())
+  updated_at              DateTime? @default(now())
+}
