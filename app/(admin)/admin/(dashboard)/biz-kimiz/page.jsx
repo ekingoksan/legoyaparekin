@@ -22,7 +22,7 @@ function BizKimizPage() {
       <Breadcrumb data={breadcrumb} />
 
       <div className="custContainer">
-          <PageTitle title="Biz Kimiz22" />
+          <PageTitle title="Biz Kimiz" />
           <BizKimiz />
       </div>
     </div>
