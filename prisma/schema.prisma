@@ -143,4 +143,18 @@ model contactMessage {
   updated_at             DateTime? @default(now())
 }
 
+model customerReviews {
+  id                     Int @id @default(autoincrement())
+  name_surname           String?
+  job_title              String?
+  description            String? @db.Text
+  created_at             DateTime? @default(now())
+  updated_at             DateTime? @default(now())
+}
 
+model customerReviewsImages {
+  id                     Int @id @default(autoincrement())
+  image                  String?
+  created_at             DateTime? @default(now())
+  updated_at             DateTime? @default(now())
+}
