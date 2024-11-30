@@ -1,31 +1,31 @@
 'use server'
-// howItsWorks
+// whoWeAre
 import { db } from "@/lib/db";
 
-export const addOrUpdateNasilCalisiyoruz = async ({
+export const addOrUpdateeBizKimizAciklamaBaslik = async ({
   title,
   description,
   mainTitle
 }) => {
   // add or update
 
-  const howItsWorks = await db.howItWorks.findMany({});
+  console.log(description, "description");
+  console.log(title, "title");
 
-  console.log({
-    title,
-    description,
-    mainTitle 
-  })
+  const whoWeAre = await db.howItWorks.findMany({});
 
-  if (howItsWorks.length > 0) {
+
+  if (whoWeAre.length > 0) {
+    console.log(description, "whoWeAre");
+
     const result = await db.howItWorks.update({
       where: {
-        id: howItsWorks[0].id,
+        id: whoWeAre[0].id,
       },
       data: {
         title,
         description,
-        mainTitle
+        mainTitle: mainTitle
       },
     });
 
@@ -34,11 +34,10 @@ export const addOrUpdateNasilCalisiyoruz = async ({
       message: "Güncelleme işlemi başarılı",
     };
   } else {
-    const result = await db.howItWorks.create({
+    const result = await db.whoWeAre.create({
       data: {
         title,
         description,
-        mainTitle
       },
     });
 
@@ -50,47 +49,57 @@ export const addOrUpdateNasilCalisiyoruz = async ({
 };
 
 
-export const addServices = async (services) => {
+export const addWorkSteps = async (services) => {
 
   if(!services || services.length === 0) {
     return {
       status: 400,
-      message: "Hizmetler boş olamaz"
+      message: "Alanlar boş olamaz"
     }
   }
 
 
-  // remove all services
-  await db.ourSkills.deleteMany({});
-
-
   services.map(async (service) => {
-    const result = await db.howItWorksSteps.create({
-      data: {
-        description: service.description,
-        title: service.name,
 
+    const exists = await db.howItWorksSteps.findFirst({
+      where: {
+        title: service.title,
+        description: service.name
       }
-    })
+    });
+
+    if(!exists) {
+      const result = await db.howItWorksSteps.create({
+        data: {
+          title: service.title,
+          description: service.name
+        }
+      })
+    }
+
   })
 
   return {
     status: 200,
-    message : "Hizmetler başarıyla eklendi"
+    message : "Başarıyla eklendi"
   }
 
 }
 
-export const getServices = async () => {
-  const services = await db.ourSkills.findMany({});
+export const getWorkSteps = async () => {
+  const steps = await db.howItWorksSteps.findMany({
+    orderBy: {
+      created_at: 'asc'
+    }
+  });
 
-  return services;
+  return steps;
 }
 
-export const deleteService = async (id) => {
+export const deleteWorksSteps = async (id) => {
 
 
-  const exists = await db.ourSkills.findFirst({
+  const exists = await db.howItWorksSteps.findFirst({
     where: {
       id
     }
@@ -100,7 +109,7 @@ export const deleteService = async (id) => {
    return {}
   }
   
-  const result = await db.ourSkills.delete({
+  const result = await db.howItWorksSteps.delete({
     where: {
       id
     }
@@ -108,6 +117,6 @@ export const deleteService = async (id) => {
 
   return {
     status: 200,
-    message: "Hizmet başarıyla silindi"
+    message: "Başarıyla silindi"
   }
 }

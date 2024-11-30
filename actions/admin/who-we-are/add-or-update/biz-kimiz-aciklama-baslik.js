@@ -47,7 +47,7 @@ export const addOrUpdateeBizKimizAciklamaBaslik = async ({
 };
 
 
-export const addWorkSteps = async (services) => {
+export const addServices = async (services) => {
 
   if(!services || services.length === 0) {
     return {
@@ -56,21 +56,22 @@ export const addWorkSteps = async (services) => {
     }
   }
 
+  console.log(services, "services");
+
 
   services.map(async (service) => {
 
-    const exists = await db.howItWorksSteps.findFirst({
+    const exists = await db.ourSkills.findFirst({
       where: {
-        title: service.title,
-        description: service.name
+        title: service.name,
+     
       }
     });
 
     if(!exists) {
-      const result = await db.howItWorksSteps.create({
+      const result = await db.ourSkills.create({
         data: {
-          title: service.title,
-          description: service.name
+          title: service.name,
         }
       })
     }
@@ -84,8 +85,8 @@ export const addWorkSteps = async (services) => {
 
 }
 
-export const getWorkSteps = async () => {
-  const steps = await db.howItWorksSteps.findMany({
+export const getServices = async () => {
+  const steps = await db.ourSkills.findMany({
     orderBy: {
       created_at: 'asc'
     }
@@ -94,10 +95,10 @@ export const getWorkSteps = async () => {
   return steps;
 }
 
-export const deleteWorksSteps = async (id) => {
+export const deleteService = async (id) => {
 
 
-  const exists = await db.howItWorksSteps.findFirst({
+  const exists = await db.ourSkills.findFirst({
     where: {
       id
     }
@@ -107,7 +108,7 @@ export const deleteWorksSteps = async (id) => {
    return {}
   }
   
-  const result = await db.howItWorksSteps.delete({
+  const result = await db.ourSkills.delete({
     where: {
       id
     }

@@ -37,8 +37,6 @@ function Yeteneklerimiz() {
 
   const fetchServices = async () => {
     const response = await getServices();
-
-    console.log(response, "response");
     setServices(response);
   };
 
@@ -57,10 +55,7 @@ function Yeteneklerimiz() {
         duration: 2000,
       });
 
-      setTimeout(() => {
-        fetchServices();
-      }, 500);
-
+      fetchServices();
 
     } else {
       toast({

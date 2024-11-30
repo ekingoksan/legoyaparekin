@@ -7,11 +7,8 @@ import { Button } from "@/components/ui/button";
 import { useForm, useFieldArray } from "react-hook-form";
 import { useToast } from "@/hooks/use-toast";
 import { PlusIcon, TrashIcon } from "lucide-react";
-import {
-  addWorkSteps,
-  deleteWorksSteps,
-  getWorkSteps,
-} from "@/actions/admin/who-we-are/add-or-update/biz-kimiz-aciklama-baslik";
+import { addWorkSteps, deleteWorksSteps, getWorkSteps } from "@/actions/admin/nasil-calisiyoruz/add-or-update/nasil-calisiyoruz";
+
 
 function Yeteneklerimiz() {
   const { toast } = useToast();
@@ -40,7 +37,6 @@ function Yeteneklerimiz() {
     setSteps(response);
   };
 
-  console.log(steps, "steps");
 
   useEffect(() => {
     fetchsteps();

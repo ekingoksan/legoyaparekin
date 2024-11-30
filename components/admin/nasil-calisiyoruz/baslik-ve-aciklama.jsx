@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { SunEditorComponent } from "@/components/ui/suneditor";
 import { useToast } from "@/hooks/use-toast";
 import { getHowItsWorks } from "@/actions/admin/nasil-calisiyoruz/get/nasil-calisiyoruz";
-import { addOrUpdateNasilCalisiyoruz } from "@/actions/admin/nasil-calisiyoruz/add-or-update/nasil-calisiyoruz";
+import { addOrUpdateeBizKimizAciklamaBaslik } from "@/actions/admin/nasil-calisiyoruz/add-or-update/nasil-calisiyoruz";
 function BaslikveAciklama() {
   const { toast } = useToast();
   const form = useForm({
@@ -20,7 +20,7 @@ function BaslikveAciklama() {
   });
 
   const onSubmit = async (data) => {
-    const result = await addOrUpdateNasilCalisiyoruz(data);
+    const result = await addOrUpdateeBizKimizAciklamaBaslik(data);
     if (result.status === 200) {
       toast({
         title: "Başarılı",
