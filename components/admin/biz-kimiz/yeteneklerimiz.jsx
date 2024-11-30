@@ -9,6 +9,7 @@ import { SunEditorComponent } from "@/components/ui/suneditor";
 import { useToast } from "@/hooks/use-toast";
 import {addOrUpdateeBizKimizAciklamaBaslik} from '@/actions/admin/who-we-are/add-or-update/biz-kimiz-aciklama-baslik'
 import { getWhoWeAre } from "@/actions/admin/who-we-are/get/get-who-we-are";
+import { PlusIcon } from "lucide-react";
 function Yeteneklerimiz() {
   const { toast } = useToast();
   const form = useForm({
@@ -54,7 +55,7 @@ function Yeteneklerimiz() {
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1 mb-5">
         <Label>Hizmet Ekle</Label>
-       <div>
+       <div className="relative">
        <Input
           type="text"
           name="title"
@@ -62,9 +63,15 @@ function Yeteneklerimiz() {
           placeholder=""
           className="w-full"
         />
+        <div className=" absolute right-2 top-1/2 transform -translate-y-1/2  border p-1 rounded 
+        hover:bg-primary-500  cursor-pointer
+        ">
+       <PlusIcon className="w-6 h-6 text-primary-500 shrink-0" />
 
-        
+        </div>
+
        </div>
+
       </div>
    
       <div className="flex justify-end mt-5">
