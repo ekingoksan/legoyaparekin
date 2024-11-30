@@ -5,6 +5,7 @@ export const adminRoutes = {
     contact: "/admin/iletisim",
     login : "/admin/giris",
     logout : "/admin/logout",
+    customer_review : "/admin/musteri-yorumlari",
     // Settings
     siteSettings : "/admin/ayarlar/site-ayarlari",
     seoSettings : "/admin/ayarlar/seo-ayarlari",

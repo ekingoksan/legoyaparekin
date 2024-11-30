@@ -55,6 +55,14 @@ function Sidebar() {
                 </Link>
               </li>
               <li>
+                <Link href={adminRoutes.customer_review} className="nav-link">
+                    <i className="bi bi-chat-left-fill"></i>
+                    <p>
+                      <span>Müşteri Yorumları</span>
+                    </p>
+                </Link>
+              </li>
+              <li>
                 <Link href={adminRoutes.contact} className="nav-link">
                     <i className="bi bi-chat-left-fill"></i>
                     <p>
