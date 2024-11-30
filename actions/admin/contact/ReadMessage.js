@@ -12,7 +12,6 @@ export const ReadMessage = async (id) => {
             }
         })
 
-        console.log("MESSAGE_ISREAD",message)
     }catch(e){
         console.log("MESSAGE_ISREAD_ERROR",e)
     }
