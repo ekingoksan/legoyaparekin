@@ -53,24 +53,20 @@ function Yeteneklerimiz() {
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1 mb-5">
-        <Label>Başlık</Label>
-        <Input
+        <Label>Hizmet Ekle</Label>
+       <div>
+       <Input
           type="text"
           name="title"
           {...form.register("title")}
-          placeholder="Başlık"
+          placeholder=""
           className="w-full"
         />
-      </div>
-      <div className="grid gap-2 py-3">
-        <Label className="font-bold">Hakkınızda</Label>
-        <SunEditorComponent
-          placeholder="Blog Metni"
-          value={form.watch("description")}
-          setValue={(e) => form.setValue("description", e)}
-        />
-      </div>
 
+        
+       </div>
+      </div>
+   
       <div className="flex justify-end mt-5">
         <Button variant="primary" size="lg">
           Kaydet
