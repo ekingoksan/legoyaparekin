@@ -18,7 +18,7 @@ function Sidebar() {
                 <Link href={adminRoutes.dashboard} className="nav-link">
                     <i className="bi bi-house-door-fill"></i>
                     <p>
-                      <span>Anasayfa2</span>
+                      <span>Anasayfa</span>
                     </p>
                 </Link>
               </li>
