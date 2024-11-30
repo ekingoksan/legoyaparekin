@@ -54,6 +54,14 @@ function Sidebar() {
                     </p>
                 </Link>
               </li>
+              <li>
+                <Link href={adminRoutes.contact} className="nav-link">
+                    <i className="bi bi-chat-left-fill"></i>
+                    <p>
+                      <span>Gelen Mesajlar</span>
+                    </p>
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link href="#" className="nav-link">
                     <i className="bi bi-gear-fill"></i>
