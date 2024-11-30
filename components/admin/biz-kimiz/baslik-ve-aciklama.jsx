@@ -65,9 +65,9 @@ function BaslikveAciklama() {
       <div className="grid gap-2 py-3">
         <Label className="font-bold">Hakkınızda</Label>
         <SunEditorComponent
-          placeholder="Blog Metni"
-          value={form.watch("description")}
-          setValue={(e) => form.setValue("description", e)}
+                  placeholder="Açıklama Metni"
+                  value={form.watch("description")}
+                  setValue={(e) => form.setValue("description", e)}
         />
       </div>
 

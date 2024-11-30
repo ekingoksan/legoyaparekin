@@ -8,44 +8,47 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { useToast } from "@/hooks/use-toast";
 import { PlusIcon, TrashIcon } from "lucide-react";
 import {
-  addServices,
-  deleteService,
-  getServices,
+  addWorkSteps,
+  deleteWorksSteps,
+  getWorkSteps,
 } from "@/actions/admin/who-we-are/add-or-update/biz-kimiz-aciklama-baslik";
 
 function Yeteneklerimiz() {
   const { toast } = useToast();
-  const [services, setServices] = React.useState([]);
+  const [steps, setSteps] = React.useState([]);
 
   const form = useForm({
     defaultValues: {
-      services: [{ name: "", id: "" }],
+      steps: [{ name: "", id: "", title: "" }],
     },
   });
 
   useEffect(() => {
     form.setValue(
-      "services",
-      services?.map((service) => ({ name: service.title, id: service.id }))
+      "steps",
+      steps?.map((service) => ({ title: service.title, id: service.id, name: service.description }))
     );
-  }, [services]);
+  }, [steps]);
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "services",
+    name: "steps",
   });
 
-  const fetchServices = async () => {
-    const response = await getServices();
-    setServices(response);
+  const fetchsteps = async () => {
+    const response = await getWorkSteps();
+    setSteps(response);
   };
 
+  console.log(steps, "steps");
+
   useEffect(() => {
-    fetchServices();
+    fetchsteps();
   }, []);
 
   const onSubmit = async (data) => {
-    const result = await addServices(data.services);
+    console.log(data, "data");
+    const result = await addWorkSteps(data.steps);
 
     if (result.status === 200) {
       toast({
@@ -55,8 +58,7 @@ function Yeteneklerimiz() {
         duration: 2000,
       });
 
-      fetchServices();
-
+      fetchsteps();
     } else {
       toast({
         title: "Hata",
@@ -64,14 +66,12 @@ function Yeteneklerimiz() {
         variant: "destrutive",
         duration: 2000,
       });
-      
     }
   };
 
-
   const _deleteService = async (id) => {
     // deleteService
-    const result = await deleteService(id);
+    const result = await deleteWorksSteps(id);
 
     if (result.status === 200) {
       toast({
@@ -81,7 +81,7 @@ function Yeteneklerimiz() {
         duration: 2000,
       });
 
-      fetchServices();
+      fetchsteps();
     }
 
     if (result?.status === 400) {
@@ -94,13 +94,13 @@ function Yeteneklerimiz() {
     }
   };
 
-  console.log(services, "services");
+  console.log(steps, "services");
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1 mb-5">
         <div className="flex justify-between">
-          <Label>Hizmet Ekle</Label>
+          <Label>Çalışma Adımı Ekle</Label>
           <Button size="sm" type="button" onClick={() => append({ name: "" })}>
             <PlusIcon className="w-6 h-6 text-primary-500 shrink-0" />
           </Button>
@@ -108,22 +108,53 @@ function Yeteneklerimiz() {
         {fields.map((field, index) => (
           <div key={field.id}>
             <div className="relative mb-2">
-              <Input
-                type="text"
-                name={`services[${index}].name`}
-                {...form.register(`services.${index}.name`, {
-                  required: "Bu alan zorunludur",
-                })}
-                placeholder={`Hizmet ${index + 1}`}
-                className="w-full"
-              />
+              <div className="flex items-center gap-x-2">
+                <div className="w-full">
+                  <Input
+                    type="text"
+                    name={`steps[${index}].title`}
+                    {...form.register(`steps.${index}.title`, {
+                      required: "Bu alan zorunludur",
+                    })}
+                    placeholder={`Başlık ${index + 1}`}
+                    className="w-full"
+                  />
+                      <div>
+              {form.formState.errors.steps?.[index]?.name && (
+                <p className="text-red-500 text-sm">
+                  {form.formState.errors.steps[index].name.message}
+                </p>
+              )}
+            </div>
+                </div>
+
+                <div className="w-full">
+                  <Input
+                    type="text"
+                    name={`steps[${index}].name`}
+                    {...form.register(`steps.${index}.name`, {
+                      required: "Bu alan zorunludur",
+                    })}
+                    placeholder={`Açıklama ${index + 1}`}
+                    className="w-full"
+                  />
+
+<div>
+              {form.formState.errors.steps?.[index]?.name && (
+                <p className="text-red-500 text-sm">
+                  {form.formState.errors.steps[index].name.message}
+                </p>
+              )}
+            </div>
+                </div>
+              </div>
 
               <Button
                 variant="outline"
                 type="button"
-                className="absolute right-0 top-1/2 transform -translate-y-1/2"
+                className="absolute right-0 top-5 transform -translate-y-1/2"
                 onClick={() => {
-                  _deleteService(services[index].id);
+                  _deleteService(steps[index].id);
                   remove(index);
                 }}
               >
@@ -131,13 +162,7 @@ function Yeteneklerimiz() {
               </Button>
             </div>
 
-            <div>
-              {form.formState.errors.services?.[index]?.name && (
-                <p className="text-red-500 text-sm">
-                  {form.formState.errors.services[index].name.message}
-                </p>
-              )}
-            </div>
+        
           </div>
         ))}
       </div>

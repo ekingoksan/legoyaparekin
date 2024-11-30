@@ -3,7 +3,7 @@ import React from 'react'
 import { PageTitle } from '@/components/admin/PageTitle'
 import Breadcrumb from '@/components/admin/Breadcrumb'
 import { adminRoutes } from '@/routes/admin/routes'
-import NasilCalisiyoruz from '@/components/admin/nasil-calisiyoruz/biz-kimiz'
+import NasilCalisiyoruz from '@/components/admin/nasil-calisiyoruz/nasil-calisiyoruz'
 function NailCalisiyoruzPage() {
   const breadcrumb = [
     {

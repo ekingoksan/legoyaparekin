@@ -8,9 +8,15 @@ export const addOrUpdateeBizKimizAciklamaBaslik = async ({
 }) => {
   // add or update
 
+  console.log(description, "description");
+  console.log(title, "title");
+
   const whoWeAre = await db.whoWeAre.findMany({});
 
+
   if (whoWeAre.length > 0) {
+    console.log(description, "whoWeAre");
+
     const result = await db.whoWeAre.update({
       where: {
         id: whoWeAre[0].id,
@@ -41,45 +47,57 @@ export const addOrUpdateeBizKimizAciklamaBaslik = async ({
 };
 
 
-export const addServices = async (services) => {
+export const addWorkSteps = async (services) => {
 
   if(!services || services.length === 0) {
     return {
       status: 400,
-      message: "Hizmetler boş olamaz"
+      message: "Alanlar boş olamaz"
     }
   }
 
 
-  // remove all services
-  await db.ourSkills.deleteMany({});
-
-
   services.map(async (service) => {
-    const result = await db.ourSkills.create({
-      data: {
-        title: service.name,
+
+    const exists = await db.howItWorksSteps.findFirst({
+      where: {
+        title: service.title,
+        description: service.name
       }
-    })
+    });
+
+    if(!exists) {
+      const result = await db.howItWorksSteps.create({
+        data: {
+          title: service.title,
+          description: service.name
+        }
+      })
+    }
+
   })
 
   return {
     status: 200,
-    message : "Hizmetler başarıyla eklendi"
+    message : "Başarıyla eklendi"
   }
 
 }
 
-export const getServices = async () => {
-  const services = await db.ourSkills.findMany({});
+export const getWorkSteps = async () => {
+  const steps = await db.howItWorksSteps.findMany({
+    orderBy: {
+      created_at: 'asc'
+    }
+  });
 
-  return services;
+  return steps;
 }
 
-export const deleteService = async (id) => {
+export const deleteWorksSteps = async (id) => {
 
 
-  const exists = await db.ourSkills.findFirst({
+  const exists = await db.howItWorksSteps.findFirst({
     where: {
       id
     }
@@ -89,7 +107,7 @@ export const deleteService = async (id) => {
    return {}
   }
   
-  const result = await db.ourSkills.delete({
+  const result = await db.howItWorksSteps.delete({
     where: {
       id
     }
@@ -97,6 +115,6 @@ export const deleteService = async (id) => {
 
   return {
     status: 200,
-    message: "Hizmet başarıyla silindi"
+    message: "Başarıyla silindi"
   }
 }

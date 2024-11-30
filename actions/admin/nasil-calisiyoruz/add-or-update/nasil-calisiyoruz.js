@@ -65,9 +65,11 @@ export const addServices = async (services) => {
 
 
   services.map(async (service) => {
-    const result = await db.ourSkills.create({
+    const result = await db.howItWorksSteps.create({
       data: {
+        description: service.description,
         title: service.name,
+
       }
     })
   })

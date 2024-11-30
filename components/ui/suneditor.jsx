@@ -7,6 +7,7 @@ import "suneditor/dist/css/suneditor.min.css";
 const SunEditor = dynamic(() => import("suneditor-react"), { ssr: false });
 
 export const SunEditorComponent = ({ value, setValue, placeholder }) => {
+    if(!value) return null
     return (
         <SunEditor
             setOptions={{

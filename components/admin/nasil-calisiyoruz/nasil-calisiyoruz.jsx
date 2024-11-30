@@ -6,7 +6,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import BaslikveAciklama from "./baslik-ve-aciklama";
-import Yeteneklerimiz from './yeteneklerimiz'
+import CalismaAdimlari from './calisma-adimlari'
 
 function NasilCalisiyoruz() {
   return (
@@ -16,7 +16,7 @@ function NasilCalisiyoruz() {
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel  className="pl-2 pr-5 overflow-hidden">
-        <Yeteneklerimiz />
+        <CalismaAdimlari />
       </ResizablePanel>
     </ResizablePanelGroup>
   );
