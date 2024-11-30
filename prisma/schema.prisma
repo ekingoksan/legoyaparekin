@@ -183,6 +183,10 @@ model myTeam {
   job_title              String?
   image                  String?
   description            String? @db.Text
+  instagram              String?
+  linkedin               String?
+  twitter                String?
   created_at             DateTime? @default(now())
   updated_at             DateTime? @default(now())
+
 }

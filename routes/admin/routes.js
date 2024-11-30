@@ -1,6 +1,7 @@
 export const adminRoutes = {
     dashboard : "/admin",
     slider: "/admin/slider",
+    ekibimiz: "/admin/ekibimiz",
     biz_kimiz: "/admin/biz-kimiz",
     nasil_calisiyoruz: "/admin/nasil-calisiyoruz",
     contact: "/admin/iletisim",
