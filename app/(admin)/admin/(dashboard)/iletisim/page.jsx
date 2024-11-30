@@ -1,6 +1,5 @@
-import { getBlogList } from "@/actions/admin/blog/get/getBlogList";
-import BlogList from "@/components/admin/blog/BlogList";
 import Breadcrumb from "@/components/admin/Breadcrumb";
+import ContactList from "@/components/admin/contact/ContactList";
 import { PageTitle } from "@/components/admin/PageTitle";
 import { adminRoutes } from "@/routes/admin/routes";
 
@@ -11,8 +10,8 @@ export default async function Home() {
       link: adminRoutes.dashboard
     },
     {
-      title: "Blog",
-      link: adminRoutes.blog
+      title: "Gelen Mesajlar",
+      link: adminRoutes.contact
     }
   ]
 
@@ -22,8 +21,8 @@ export default async function Home() {
     <div>
         <Breadcrumb data={breadcrumb} />
         <div className="custContainer">
-          <PageTitle title="Blog" />
-          <BlogList />
+          <PageTitle title="Gelen Mesajlar" />
+          <ContactList />
         </div>
     </div>
 
