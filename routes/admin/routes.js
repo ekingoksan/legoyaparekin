@@ -2,6 +2,7 @@ export const adminRoutes = {
     dashboard : "/admin",
     slider: "/admin/slider",
     biz_kimiz: "/admin/biz-kimiz",
+    nasil_calisiyoruz: "/admin/nasil-calisiyoruz",
     contact: "/admin/iletisim",
     login : "/admin/giris",
     logout : "/admin/logout",

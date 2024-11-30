@@ -39,6 +39,14 @@ function Sidebar() {
                 </Link>
               </li>
               <li>
+                <Link href={adminRoutes.nasil_calisiyoruz} className="nav-link">
+                    <i className="bi bi-person-arms-up"></i>
+                    <p>
+                      <span>Nasıl Çalışıyoruz</span>
+                    </p>
+                </Link>
+              </li>
+              <li>
                 <Link href={adminRoutes.blog} className="nav-link">
                     <i className="bi bi-file-earmark-fill"></i>
                     <p>
