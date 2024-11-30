@@ -103,14 +103,6 @@ function Sidebar() {
                         </p>
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link href={adminRoutes.mailSettings} className="nav-link">
-                        <i className="bi bi-circle"></i>
-                        <p>
-                          <span>Maasdasdil Ayarları</span>
-                        </p>
-                    </Link>
-                  </li>
                 </ul>
               </li>
             </ul>
