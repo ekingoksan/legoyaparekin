@@ -3,6 +3,7 @@ export const adminRoutes = {
     slider: "/admin/slider",
     ekibimiz: "/admin/ekibimiz",
     biz_kimiz: "/admin/biz-kimiz",
+    genel_durumumuz: "/admin/genel-durumumuz",
     nasil_calisiyoruz: "/admin/nasil-calisiyoruz",
     contact: "/admin/iletisim",
     login : "/admin/giris",

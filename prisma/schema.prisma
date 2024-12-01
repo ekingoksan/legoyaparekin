@@ -121,6 +121,8 @@ model whoWeAre {
   id                      Int @id @default(autoincrement())
   title                   String?
   description             String? @db.Text
+  image_1                 String?
+  image_2                 String?
   created_at              DateTime? @default(now())
   updated_at              DateTime? @default(now())
 }
@@ -189,4 +191,15 @@ model myTeam {
   created_at             DateTime? @default(now())
   updated_at             DateTime? @default(now())
 
+}
+
+model generalStatus {
+  id                     Int @id @default(autoincrement())
+
+  completed_projects     Int @db.Int @default(0)
+  satisfied_customers    Int @db.Int @default(0)
+  years_of_experience    Int @db.Int @default(0)
+  customer_retention     Int @db.Int @default(0)
+  created_at             DateTime? @default(now())
+  updated_at             DateTime? @default(now())
 }

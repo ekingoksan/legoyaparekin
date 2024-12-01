@@ -31,6 +31,14 @@ function Sidebar() {
                 </Link>
               </li>
               <li>
+                <Link href={adminRoutes.genel_durumumuz} className="nav-link">
+                    <i className="bi bi-modem"></i>
+                    <p>
+                      <span>Genel Durumumuz</span>
+                    </p>
+                </Link>
+              </li>
+              <li>
                 <Link href={adminRoutes.biz_kimiz} className="nav-link">
                     <i className="bi bi-person-arms-up"></i>
                     <p>
@@ -40,7 +48,7 @@ function Sidebar() {
               </li>
               <li>
                 <Link href={adminRoutes.ekibimiz} className="nav-link">
-                    <i className="bi bi-person-arms-up"></i>
+                    <i className="bi bi-person-vcard"></i>
                     <p>
                       <span>Ekibimiz</span>
                     </p>
@@ -48,7 +56,7 @@ function Sidebar() {
               </li>
               <li>
                 <Link href={adminRoutes.nasil_calisiyoruz} className="nav-link">
-                    <i className="bi bi-person-arms-up"></i>
+                    <i className="bi bi-ubuntu"></i>
                     <p>
                       <span>Nasıl Çalışıyoruz</span>
                     </p>
