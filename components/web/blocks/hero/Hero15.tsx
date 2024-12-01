@@ -1,9 +1,28 @@
 
+'use client'
 import NextLink from "@/components/web/reuseable/links/NextLink";
 import LightBox from "../../LightBox";
 import Carousel from "../../reuseable/Carousel";
+import { useGetSliderQuery, useLazyGetSliderQuery } from "@/redux/slider/slider-api";
+import { useEffect } from "react";
 
 export default function Hero15() {
+  const [
+    getSlider,
+    {
+      data,
+      isLoading,
+      error
+    }
+  ] = useLazyGetSliderQuery();
+
+
+  useEffect(() => {
+    getSlider()
+  }, [])
+  
+
+  console.log(data, isLoading, error);
   return (
     <div className="wrapper bg-dark">
       {/* USED FOR IMAGE LIGHTBOX */}

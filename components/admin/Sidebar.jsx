@@ -144,6 +144,16 @@ function Sidebar() {
                     </Link>
                   </li>
                 </ul>
+
+              </li>
+              
+              <li>
+                <Link href={adminRoutes.aboneler} className="nav-link">
+                    <i className="bi bi-mailbox"></i>
+                    <p>
+                      <span>Aboneler</span>
+                    </p>
+                </Link>
               </li>
             </ul>
           </div>

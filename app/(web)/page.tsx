@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Dispatch, Fragment, SetStateAction, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import NavbarOne from "@/components/web/blocks/navbar/navbar-1";
 import { Hero15 } from "@/components/web/blocks/hero";
@@ -10,11 +10,35 @@ import { Facts5 } from "@/components/web/blocks/facts";
 import { Contact7 } from "@/components/web/blocks/contact";
 import { CTA5 } from "@/components/web/blocks/call-to-action";
 import { Footer9 } from "@/components/web/blocks/footer";
+import { store } from "@/redux/store";
+import slider_api from "@/redux/slider/slider-api";
+import { getSlider } from "@/actions/web/slider";
 
-export default function Demo15() {
+interface DenemeProps {
+  setDeneme: Dispatch<
+    SetStateAction<{
+      id: string;
+      name: string;
+    } | null>
+  >;
+  deneme: {
+    id: string;
+    name: string;
+} | null
+}
+
+
+export default async function Page() {
+  // const { data: sliderData, error: sliderError } = await store.dispatch(
+  //   slider_api.endpoints.getSlider.initiate()
+  // );
+
+ const result =  await getSlider()
+  
+
   return (
     <Fragment>
-      {/* ========== header ========== */}
+
       <header className="wrapper bg-soft-primary">
         <NavbarOne
           info

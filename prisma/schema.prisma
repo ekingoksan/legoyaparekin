@@ -203,3 +203,11 @@ model generalStatus {
   created_at             DateTime? @default(now())
   updated_at             DateTime? @default(now())
 }
+
+
+model Subscribers {
+  id                     Int @id @default(autoincrement())
+  email                  String?
+  created_at             DateTime? @default(now())
+  updated_at             DateTime? @default(now())
+}

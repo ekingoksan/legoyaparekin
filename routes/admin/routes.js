@@ -2,6 +2,7 @@ export const adminRoutes = {
     dashboard : "/admin",
     slider: "/admin/slider",
     ekibimiz: "/admin/ekibimiz",
+    aboneler : "/admin/aboneler",
     biz_kimiz: "/admin/biz-kimiz",
     genel_durumumuz: "/admin/genel-durumumuz",
     nasil_calisiyoruz: "/admin/nasil-calisiyoruz",
@@ -19,6 +20,7 @@ export const adminRoutes = {
 
     // Blog
     blog : "/admin/blog",
+
     // Portfolio
     portfolio : "/admin/yaptigimiz-isler",
 }
