@@ -17,7 +17,9 @@ export default function ThemeProvider({ children }: PropsWithChildren) {
     if (typeof window === undefined) return;
 
     // Change the color and font based on route
-    changeTheme(pathname);
+    if (pathname) {
+      changeTheme(pathname);
+    }
 
     // Hide loader
     // If you don't want loader remove <div className="page-loader" /> element form _app.tsx

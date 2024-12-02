@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import NextLink from "../links/NextLink";
-import LightBox from "@/components/LightBox";
-import MasonryGrid from "@/components/MasonryGrid";
+import LightBox from "../../LightBox";
+import MasonryGrid from "../../MasonryGrid";
 
 // ==============================================================================
 type ProjectCard1Props = {

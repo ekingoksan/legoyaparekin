@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 // GLOBAL CUSTOM COMPONENTS
 import NextLink from "./links/NextLink";
-import FigureImage from "@/components/reuseable/FigureImage";
 // CUSTOM UTILS LIBRARY FUNCTIONS
 import ratingGenerate from "utils/ratings";
+import FigureImage from "./FigureImage";
 
 // ===================================================================
 type ReviewCardProps = {

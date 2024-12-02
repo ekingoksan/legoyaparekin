@@ -69,7 +69,6 @@ export default function Info({
 
         <div className="widget">
           <h4 className="widget-title text-white mb-3">Follow Us</h4>
-          <SocialLinks className="nav social social-white" />
         </div>
       </div>
     </div>

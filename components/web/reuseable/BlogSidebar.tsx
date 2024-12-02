@@ -27,7 +27,6 @@ export default function BlogSidebar({ thumbnail }: BlogSidebarProps) {
           libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus.
         </p>
 
-        <SocialLinks className="nav social" />
       </div>
 
       {/* ========== popular posts section ========== */}

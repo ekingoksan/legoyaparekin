@@ -1,4 +1,5 @@
-import Collapse from "@/components/reuseable/Collapse";
+import Collapse from "../reuseable/Collapse";
+
 // CUSTOM DATA
 const collapseList = [
   {

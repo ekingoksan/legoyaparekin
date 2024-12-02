@@ -1,9 +1,10 @@
-import Carousel from "@/components/reuseable/Carousel";
-import { BlogCard1 } from "@/components/reuseable/blog-cards";
+
 // CUSTOM UTILS LIBRARY FUNCTIONS
 import carouselBreakpoints from "utils/carouselBreakpoints";
 // CUSTOM DATA
 import { blogList1 } from "data/blog";
+import Carousel from "../../reuseable/Carousel";
+import { BlogCard1 } from "../../reuseable/blog-cards";
 
 export default function Blog1() {
   return (

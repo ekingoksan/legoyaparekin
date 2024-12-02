@@ -1,4 +1,4 @@
-import CountUp from "@/components/reuseable/CountUp";
+import CountUp from "../CountUp";
 
 // ====================================================
 interface CounterProps {

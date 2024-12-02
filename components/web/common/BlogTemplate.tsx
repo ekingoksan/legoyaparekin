@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Fragment } from "react";
+import { BlogCard2, BlogCard3 } from "../reuseable/blog-cards";
+import Carousel from "../reuseable/Carousel";
+import VideoPlyr from "../reuseable/VideoPlyr";
+import Pagination from "../reuseable/Pagination";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "@/components/reuseable/Carousel";
-import VideoPlyr from "@/components/reuseable/VideoPlyr";
-import Pagination from "@/components/reuseable/Pagination";
-import { BlogCard2, BlogCard3 } from "@/components/reuseable/blog-cards";
 // CUSTOM DATA
 const blogs = [
   {

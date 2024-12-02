@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import NextLink from "../links/NextLink";
-import LightBox from "@/components/LightBox";
+import LightBox from "../../LightBox";
 
 // ==============================================================================
 interface ProjectCard3Props {

@@ -5,8 +5,8 @@ import { Fragment, useState } from "react";
 import type Swiper from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper as SwiperCarousel, SwiperSlide } from "swiper/react";
+import LightBox from "../LightBox";
 // GLOBAL CUSTOM COMPONENTS
-import LightBox from "@/components/LightBox";
 
 export default function ThumbsCarousel() {
   const [thumbsSwiper, setThumbsSwiper] = useState<Swiper>();

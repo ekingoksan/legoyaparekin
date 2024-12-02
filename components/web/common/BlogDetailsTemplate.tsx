@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 // GLOBAL CUSTOM COMPONENTS
-import LightBox from "@/components/LightBox";
-import Carousel from "@/components/reuseable/Carousel";
-import ShareButton from "@/components/common/ShareButton";
-import FigureImage from "@/components/reuseable/FigureImage";
 import NextLink from "@/components/web/reuseable/links/NextLink";
 import SocialLinks from "@/components/web/reuseable/SocialLinks";
-import BlogCommentList from "@/components/common/BlogCommentList";
-import { BlogCard1 } from "@/components/reuseable/blog-cards";
+import FigureImage from "../reuseable/FigureImage";
+import LightBox from "../LightBox";
+import ShareButton from "./ShareButton";
+import Carousel from "../reuseable/Carousel";
+import { BlogCard1 } from "../reuseable/blog-cards";
+import BlogCommentList from "./BlogCommentList";
 // CUSTOM DATA
 const tags = [
   { id: 1, title: "Still Life", url: "#" },
@@ -188,7 +188,6 @@ export default function BlogDetailsTemplate() {
           risus. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac. Maecenas faucibus mollis interdum.
         </p>
 
-        <SocialLinks className="nav social" />
 
         <hr />
 
