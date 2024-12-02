@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import bcryptjs from "bcryptjs";
 
 export async function POST(req,res){
+    console.log('work')
     try {
         const formData = await req.formData();
         const email = formData.get("email");

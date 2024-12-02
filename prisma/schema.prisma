@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider       = "prisma-client-js"
 }
 
 datasource db {
@@ -8,206 +8,203 @@ datasource db {
 }
 
 model users {
-  id                      Int @id @default(autoincrement())
-  email                   String
-  phone                   String @db.VarChar(15)
-  password                String
-  type                    Int @db.TinyInt @default(1)
-  is_active               Int @db.TinyInt @default(1)
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+  id         Int       @id @default(autoincrement())
+  email      String
+  phone      String    @db.VarChar(15)
+  password   String
+  type       Int       @default(1) @db.TinyInt
+  is_active  Int       @default(1) @db.TinyInt
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 }
 
-model siteSettings{
-  id                      Int @id @default(autoincrement())
+model siteSettings {
+  id                      Int       @id @default(autoincrement())
   logo                    String?
   favicon                 String?
-  address                 String? @db.Text
-  phone                   String? @db.VarChar(50)
+  address                 String?   @db.Text
+  phone                   String?   @db.VarChar(50)
   email                   String?
-  google_map              String? @db.Text
-  whatsapp                String? @db.VarChar(50)
-  whatsapp_live           Int @db.TinyInt @default(0)
-  maintenance_mode        Int @db.TinyInt @default(0)
-  maintenance_text        String? @db.LongText
+  google_map              String?   @db.Text
+  whatsapp                String?   @db.VarChar(50)
+  whatsapp_live           Int       @default(0) @db.TinyInt
+  maintenance_mode        Int       @default(0) @db.TinyInt
+  maintenance_text        String?   @db.LongText
   currency                String?
   currency_symbol         String?
-  is_change_cart_currency Int @db.TinyInt @default(0)
+  is_change_cart_currency Int       @default(0) @db.TinyInt
   created_at              DateTime? @default(now())
   updated_at              DateTime? @default(now())
 }
 
-model footerSettings{
-  id                      Int @id @default(autoincrement())
-  logo                    String?
-  footer_text             String? @db.Text
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model footerSettings {
+  id          Int       @id @default(autoincrement())
+  logo        String?
+  footer_text String?   @db.Text
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
-model socialMedia{
-  id                      Int @id @default(autoincrement())
-  facebook                String?
-  instagram               String?
-  twitter                 String?
-  linkedin                String?
-  youtube                 String?
-  pinterest               String?
-  tiktok                  String?
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model socialMedia {
+  id         Int       @id @default(autoincrement())
+  facebook   String?
+  instagram  String?
+  twitter    String?
+  linkedin   String?
+  youtube    String?
+  pinterest  String?
+  tiktok     String?
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 }
 
-model seoSettings{
-  id                      Int @id @default(autoincrement())
-  site_title              String?
-  keywords                String? @db.Text
-  description             String? @db.Text
-  page_title              Int @db.TinyInt @default(1)
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model seoSettings {
+  id          Int       @id @default(autoincrement())
+  site_title  String?
+  keywords    String?   @db.Text
+  description String?   @db.Text
+  page_title  Int       @default(1) @db.TinyInt
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
-model emailSettings{
-  id                      Int @id @default(autoincrement())
-  host                    String?
-  port                    Int?
-  secure                  Int @db.TinyInt @default(1)
-  user                    String?
-  pass                    String?
-  is_using                Int @db.TinyInt @default(0)
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model emailSettings {
+  id         Int       @id @default(autoincrement())
+  host       String?
+  port       Int?
+  secure     Int       @default(1) @db.TinyInt
+  user       String?
+  pass       String?
+  is_using   Int       @default(0) @db.TinyInt
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 }
 
-model blog{
-  id                      Int @id @default(autoincrement())
-  title                   String?
-  slug                    String?
-  image                   String?
-  description             String? @db.Text
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model blog {
+  id          Int       @id @default(autoincrement())
+  title       String?
+  slug        String?
+  image       String?
+  description String?   @db.Text
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
 model sliders {
-  id                      Int @id @default(autoincrement())
-  title                   String?
-  image                   String?
-  description             String? @db.Text
-  link                    String?
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+  id          Int       @id @default(autoincrement())
+  title       String?
+  image       String?
+  description String?   @db.Text
+  link        String?
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
-model portfolio{
-  id                      Int @id @default(autoincrement())
-  title                   String?
-  slug                    String?
-  description             String? @db.Text
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model portfolio {
+  id          Int       @id @default(autoincrement())
+  title       String?
+  slug        String?
+  description String?   @db.Text
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
-model portfolioImages{
-  id                      Int @id @default(autoincrement())
-  portfolio_id            Int
-  image                   String?
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+model portfolioImages {
+  id           Int       @id @default(autoincrement())
+  portfolio_id Int
+  image        String?
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @default(now())
 }
 
 model whoWeAre {
-  id                      Int @id @default(autoincrement())
-  title                   String?
-  description             String? @db.Text
-  image_1                 String?
-  image_2                 String?
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+  id          Int       @id @default(autoincrement())
+  title       String?
+  description String?   @db.Text
+  image_1     String?
+  image_2     String?
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
 model ourSkills {
-  id                      Int @id @default(autoincrement())
-  title                   String?
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+  id         Int       @id @default(autoincrement())
+  title      String?
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 }
 
 model howItWorks {
-  id                      Int @id @default(autoincrement())
-  mainTitle               String?
-  title                   String?
-  description             String? @db.Text
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+  id          Int       @id @default(autoincrement())
+  mainTitle   String?
+  title       String?
+  description String?   @db.Text
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
 model howItWorksSteps {
-  id                      Int @id @default(autoincrement())
-  title                   String?
-  description             String? @db.Text
-  created_at              DateTime? @default(now())
-  updated_at              DateTime? @default(now())
+  id          Int       @id @default(autoincrement())
+  title       String?
+  description String?   @db.Text
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 }
 
 model contactMessage {
-  id                     Int @id @default(autoincrement())
-  name_surname           String?
-  email                  String?
-  phone                  String?
-  message                String? @db.Text
-  is_read                Int @db.TinyInt @default(0)
-  created_at             DateTime? @default(now())
-  updated_at             DateTime? @default(now())
+  id           Int       @id @default(autoincrement())
+  name_surname String?
+  email        String?
+  phone        String?
+  message      String?   @db.Text
+  is_read      Int       @default(0) @db.TinyInt
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @default(now())
 }
 
 model customerReviews {
-  id                     Int @id @default(autoincrement())
-  name_surname           String?
-  job_title              String?
-  description            String? @db.Text
-  created_at             DateTime? @default(now())
-  updated_at             DateTime? @default(now())
+  id           Int       @id @default(autoincrement())
+  name_surname String?
+  job_title    String?
+  description  String?   @db.Text
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @default(now())
 }
 
 model customerReviewsImages {
-  id                     Int @id @default(autoincrement())
-  image                  String?
-  created_at             DateTime? @default(now())
-  updated_at             DateTime? @default(now())
+  id         Int       @id @default(autoincrement())
+  image      String?
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 }
 
-
 model myTeam {
-  id                     Int @id @default(autoincrement())
-  name_surname           String?
-  job_title              String?
-  image                  String?
-  description            String? @db.Text
-  instagram              String?
-  linkedin               String?
-  twitter                String?
-  created_at             DateTime? @default(now())
-  updated_at             DateTime? @default(now())
-
+  id           Int       @id @default(autoincrement())
+  name_surname String?
+  job_title    String?
+  image        String?
+  description  String?   @db.Text
+  instagram    String?
+  linkedin     String?
+  twitter      String?
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @default(now())
 }
 
 model generalStatus {
-  id                     Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  completed_projects     Int @db.Int @default(0)
-  satisfied_customers    Int @db.Int @default(0)
-  years_of_experience    Int @db.Int @default(0)
-  customer_retention     Int @db.Int @default(0)
-  created_at             DateTime? @default(now())
-  updated_at             DateTime? @default(now())
+  completed_projects  Int       @default(0) @db.Int
+  satisfied_customers Int       @default(0) @db.Int
+  years_of_experience Int       @default(0) @db.Int
+  customer_retention  Int       @default(0) @db.Int
+  created_at          DateTime? @default(now())
+  updated_at          DateTime? @default(now())
 }
 
-
 model Subscribers {
-  id                     Int @id @default(autoincrement())
-  email                  String?
-  created_at             DateTime? @default(now())
-  updated_at             DateTime? @default(now())
+  id         Int       @id @default(autoincrement())
+  email      String?
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 }

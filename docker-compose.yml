@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  nextjs_app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/app
+    networks:
+      - nextjs-network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf  # default.conf dosyasını bağla
+      - ./public:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    depends_on:
+      - nextjs_app
+    networks:
+      - nextjs-network
+    restart: unless-stopped
+
+networks:
+  nextjs-network:
+    driver: bridge
