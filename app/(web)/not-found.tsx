@@ -13,7 +13,10 @@ export default function NotFound() {
     <Fragment>
       {/* ========== header section ========== */}
       <header className="wrapper bg-light">
-        <NavbarOne
+      <NavbarOne
+          isMain={false}
+          logo=""
+          socialMedia={[]}
           language
           button={<NextLink title="Contact" href="#" className="btn btn-sm btn-primary rounded-pill" />}
         />
@@ -44,7 +47,7 @@ export default function NotFound() {
       </main>
 
       {/* ========== footer section ========== */}
-      <Footer9 />
+      <Footer9 logo="" address="" email="" phone="" socialMedia={[]} footer={[]} />
     </Fragment>
   );
 }
