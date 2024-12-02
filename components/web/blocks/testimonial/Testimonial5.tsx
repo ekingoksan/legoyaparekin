@@ -1,10 +1,21 @@
 
 // CUSTOM DATA
-import { testimonialList2 } from "data/testimonial-list";
 import Carousel from "../../reuseable/Carousel";
 import { TestimonialCard2 } from "../../reuseable/testimonial-cards";
 
-export default function Testimonial5() {
+interface Testimonial5Props {
+  image: string;
+  list: {
+    id: number;
+    description: string | null;
+    created_at: Date | null;
+    updated_at: Date | null;
+    name_surname: string | null;
+    job_title: string | null;
+}[]
+}
+
+export default function Testimonial5({ image, list }: Testimonial5Props) {
   return (
     <section className="wrapper bg-soft-primary">
       <div className="container pt-16 pb-14 pb-md-0">
@@ -16,19 +27,17 @@ export default function Testimonial5() {
             />
 
             <figure>
-              <img src="/img/photos/co1.png" srcSet="/img/photos/co1@2x.png 2x" alt="" />
+              <img src={`/images/site/${image}`} srcSet={`/images/site/${image}`} alt="" />
             </figure>
           </div>
 
           <div className="col-md-7 col-lg-6 col-xl-6 col-xxl-5 offset-xl-1">
             <div className="swiper-container dots-start dots-closer mt-md-10 mb-md-15">
               <Carousel grabCursor slidesPerView={1} navigation={false}>
-                {testimonialList2.map((item, i) => (
+                {list.map((item, i) => (
                   <TestimonialCard2
                     {...item}
                     key={i}
-                    blockClassName="icon fs-lg"
-                    blockDetailsClassName="blockquote-details"
                   />
                 ))}
               </Carousel>

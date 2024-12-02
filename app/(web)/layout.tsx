@@ -24,12 +24,20 @@ import "assets/scss/style.scss";
 import ScrollCue from "@/components/web/ScrollCue";
 import PageProgress from "@/components/web/common/PageProgress";
 import Progress from "@/components/web/Progress";
+import { getSeoSettings } from "@/actions/web/getSeoSettings";
 
 
-export const metadata: Metadata = {
-  title: "Sandbox - Modern & Multipurpose NextJS Template",
-  description: "Sandbox is a beautiful and flawless site template."
-};
+export async function generateMetadata(){
+  // fetch data
+  const seo = await getSeoSettings();
+    console.log("SEO",seo)
+
+  return {
+    title: seo?.data?.site_title,
+    keywords: seo?.data?.keywords,
+    description: seo?.data?.description,
+  }
+}
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

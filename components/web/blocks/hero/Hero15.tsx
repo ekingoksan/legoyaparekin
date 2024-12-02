@@ -1,28 +1,20 @@
-
-'use client'
 import NextLink from "@/components/web/reuseable/links/NextLink";
 import LightBox from "../../LightBox";
 import Carousel from "../../reuseable/Carousel";
-import { useGetSliderQuery, useLazyGetSliderQuery } from "@/redux/slider/slider-api";
-import { useEffect } from "react";
 
-export default function Hero15() {
-  const [
-    getSlider,
-    {
-      data,
-      isLoading,
-      error
-    }
-  ] = useLazyGetSliderQuery();
+interface SliderProps {
+  data: {
+    id: number;
+    title: string | null;
+    image: string | null;
+    description: string | null;
+    link: string | null;
+    created_at: Date | null;
+    updated_at: Date | null;
+  }[] | null;
+}
 
-
-  useEffect(() => {
-    getSlider()
-  }, [])
-  
-
-  console.log(data, isLoading, error);
+export default function Hero15({ data }: SliderProps) {
   return (
     <div className="wrapper bg-dark">
       {/* USED FOR IMAGE LIGHTBOX */}
@@ -30,76 +22,47 @@ export default function Hero15() {
 
       <div className="swiper-container swiper-hero dots-over">
         <Carousel slidesPerView={1} autoplay={{ delay: 7000, disableOnInteraction: false }}>
-          <div
-            className="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-            style={{ backgroundImage: 'url("/img/photos/bg7.jpg")' }}>
-            <div className="container h-100">
-              <div className="row h-100">
-                <div className="col-md-10 offset-md-1 col-lg-7 offset-lg-0 col-xl-6 col-xxl-5 text-center text-lg-start justify-content-center align-self-center align-items-start">
-                  <h2 className="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
-                    We bring solutions to make life easier.
-                  </h2>
+          {data?.map((item, index) => (
+            <div
+              key={`slider_${index}`}
+              className="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
+              style={{
+                backgroundImage: `url(/images/site/${item.image})`,
+              }}
+            >
+              <div className="container h-100">
+                <div className="row h-100">
+                  <div className="col-md-10 offset-md-1 col-lg-7 offset-lg-0 col-xl-6 col-xxl-5 text-center text-lg-start justify-content-center align-self-center align-items-start">
+                    {item.title && (
+                      <h2 className="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
+                      {item.title}
+                    </h2>
+                  )}
 
-                  <p className="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
-                    We are a creative company that focuses on long term relationships with customers.
-                  </p>
+                    {
+                      item.description && (
+                        <p className="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
+                        {item.description}
+                      </p>
+                      )
+                    }
 
-                  <div className="animate__animated animate__slideInUp animate__delay-3s">
-                    <NextLink title="Read More" href="#" className="btn btn-lg btn-outline-white rounded-pill" />
+                    {
+                      item.link && (
+                          <div className="animate__animated animate__slideInUp animate__delay-3s">
+                          <NextLink
+                            title="Sayfaya Git"
+                            href={item.link}
+                            className="btn btn-lg btn-outline-white rounded-pill"
+                          />
+                        </div>
+                      )
+                    }
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div
-            className="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-            style={{ backgroundImage: 'url("/img/photos/bg8.jpg")' }}>
-            <div className="container h-100">
-              <div className="row h-100">
-                <div className="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
-                  <h2 className="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
-                    We are trusted by over a million customers.
-                  </h2>
-
-                  <p className="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
-                    Here a few reasons why our customers choose us.
-                  </p>
-
-                  <div className="animate__animated animate__slideInUp animate__delay-3s">
-                    <a
-                      data-glightbox
-                      href="/media/movie.mp4"
-                      className="btn btn-circle btn-white btn-play ripple mx-auto mb-5">
-                      <i className="icn-caret-right" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-            style={{ backgroundImage: 'url("/img/photos/bg9.jpg")' }}>
-            <div className="container h-100">
-              <div className="row h-100">
-                <div className="col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start justify-content-center align-self-center align-items-start">
-                  <h2 className="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
-                    Just sit and relax.
-                  </h2>
-
-                  <p className="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
-                    We make sure your spending is stress free so that you can have the perfect control.
-                  </p>
-
-                  <div className="animate__animated animate__slideInUp animate__delay-3s">
-                    <NextLink title="Contact Us" href="#" className="btn btn-lg btn-outline-white rounded-pill" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          )) || []}
         </Carousel>
       </div>
     </div>

@@ -65,7 +65,7 @@ export default function HeaderRight({
         ) : null}
 
         {/* ============= social icons link ============= */}
-        {social ? <Social /> : null}
+       
 
         {/* ============= hamburger button for small device ============= */}
         <li className="nav-item d-lg-none">

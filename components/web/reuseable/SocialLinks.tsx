@@ -1,23 +1,58 @@
 // ========================================================
-type SocialLinksProps = { className?: string };
+type SocialLinksProps = { className?: string, socialMedia: any };
 // ========================================================
 
-const links = [
-  { id: 1, icon: "uil uil-twitter", url: "https://twitter.com/uilibofficial" },
-  { id: 2, icon: "uil uil-facebook-f", url: "https://facebook.com/uiLibOfficial/" },
-  { id: 3, icon: "uil uil-dribbble", url: "#" },
-  { id: 4, icon: "uil uil-instagram", url: "https://www.instagram.com/uilibofficial/" },
-  { id: 5, icon: "uil uil-youtube", url: "https://www.youtube.com/channel/UCsIyD-TSO1wQFz-n2Y4i3Rg" }
-];
+export default function SocialLinks({ className = "nav social social-white mt-4", socialMedia }: SocialLinksProps) {
 
-export default function SocialLinks({ className = "nav social social-white mt-4" }: SocialLinksProps) {
   return (
     <nav className={className}>
-      {links.map(({ id, icon, url }) => (
-        <a href={url} key={id} target="_blank" rel="noreferrer">
-          <i className={icon} />
-        </a>
-      ))}
+      {
+        socialMedia?.facebook && (
+          <a href={`https://facebook.com/${socialMedia?.facebook}`} target="_blank" rel="noreferrer">
+            <i className="uil uil-facebook-f" />
+          </a>
+        )
+      }
+
+      {
+        socialMedia?.instagram && (
+          <a href={`https://instagram.com/${socialMedia?.instagram}`} target="_blank" rel="noreferrer">
+            <i className="uil uil-instagram" />
+          </a>
+        )
+      }
+
+      {
+        socialMedia?.twitter && (
+          <a href={`https://twitter.com/${socialMedia?.twitter}`} target="_blank" rel="noreferrer">
+            <i className="uil uil-twitter" />
+          </a>
+        )
+      }
+
+      {
+        socialMedia?.linkedin && (
+          <a href={`https://linkedin.com/${socialMedia?.linkedin}`} target="_blank" rel="noreferrer">
+            <i className="uil uil-linkedin" />
+          </a>
+        )
+      }
+
+      {
+        socialMedia?.youtube && (
+          <a href={`https://youtube.com/${socialMedia?.youtube}`} target="_blank" rel="noreferrer">
+            <i className="uil uil-youtube" />
+          </a>
+        )
+      }
+
+      {
+        socialMedia?.pinterest && (
+          <a href={`https://pinterest.com/${socialMedia?.pinterest}`} target="_blank" rel="noreferrer">
+            <i className="uil uil-pinterest" />
+          </a>
+        )
+      }
     </nav>
   );
 }

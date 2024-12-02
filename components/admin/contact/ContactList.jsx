@@ -41,7 +41,7 @@ const ContactList = () => {
             return toast({
                 title: 'Başarılı',
                 description: res.message,
-                variant: 'destructive',
+                variant: 'success',
                 duration: 2000,
             });
         }else{

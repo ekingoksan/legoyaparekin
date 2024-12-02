@@ -1,32 +1,45 @@
 import Megaphone from "icons/lineal/Megaphone";
 // CUSTOM DATA
-import { aboutList2 } from "data/about";
 import { Tiles5 } from "../../elements/tiles";
 import ListColumn from "../../reuseable/ListColumn";
 
-export default function About6() {
+interface AboutProps {
+  about: {
+    id: number;
+    title: string | null;
+    description: string | null;
+    created_at: Date | null;
+    updated_at: Date | null;
+    image_1: string | null;
+    image_2: string | null;
+  } | null;
+  ourSkills: {
+    title: string | null;
+    id: number;
+    created_at: Date | null;
+    updated_at: Date | null;
+  }[] | null;
+}
+
+export default function About6({ about, ourSkills }: AboutProps) {
+
+  const images = [about?.image_1, about?.image_2].filter((item): item is string => !!item);
   return (
     <div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
       <div className="col-lg-6 position-relative order-lg-2">
-        <Tiles5 />
+        <Tiles5 images={images} />      
       </div>
 
       <div className="col-lg-6">
         <Megaphone className="icon-svg-md mb-4" />
 
-        <h2 className="display-4 mb-3">Who Are We?</h2>
+        <h2 className="display-4 mb-3">{about?.title}</h2>
 
-        <p className="lead fs-lg">
-          We are a digital and branding company that believes in the power of creative strategy and along with great
-          design.
-        </p>
+        {about?.description && (
+          <div className="lead" dangerouslySetInnerHTML={{ __html: about.description }} />
+        )}
 
-        <p className="mb-6">
-          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus
-          ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-        </p>
-
-        <ListColumn rowClass="gx-xl-8" list={aboutList2} />
+        <ListColumn rowClass="gx-xl-8" list={ourSkills} />
       </div>
     </div>
   );

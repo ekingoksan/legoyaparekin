@@ -4,47 +4,65 @@ import List from "icons/lineal/List";
 // GLOBAL CUSTOM COMPONENTS
 import NextLink from "@/components/web/reuseable/links/NextLink";
 // CUSTOM DATA
-import { processList1 } from "data/process";
 import { ProcessList1 } from "../../reuseable/process-list";
 
-export default function Process7() {
+interface Process7Props {
+  howItWorks: {
+    id: number;
+    mainTitle: string | null;
+    title: string | null;
+    description: string | null;
+    created_at: Date | null;
+    updated_at: Date | null;
+  } | null;
+  howItWorksSkills: {
+    title: string | null;
+    id: number;
+    description: string | null;
+    created_at: Date | null;
+    updated_at: Date | null;
+  }[];
+  isMainPage: boolean;
+}
+
+export default function Process7({ howItWorks, howItWorksSkills, isMainPage }: Process7Props) {
   return (
     <Fragment>
       <div className="row mb-5">
         <div className="col-md-10 col-xl-8 col-xxl-7 mx-auto text-center">
-          <div className="flex justify-center items-center">
-            <List />
-          </div>
-          <h2 className="display-4 mb-4 px-lg-14">Here are 3 working steps to organize our business projects.</h2>
+         {
+            isMainPage && (
+              <div className="flex justify-center items-center">
+                <List />
+              </div>
+            )
+         }
+          <h2 className="display-4 mb-4 px-lg-14">{howItWorks?.mainTitle}</h2>
         </div>
       </div>
 
-      <div className="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
+      <div className={`row gx-lg-8 gx-xl-12 gy-10 ${isMainPage ? "align-items-center" : "align-items-start"}`}>
         <div className="col-lg-6 order-lg-2">
-          {processList1.map((item) => (
-            <ProcessList1 {...item} key={item.no} />
+          {howItWorksSkills.map((item, index) => (
+            <ProcessList1 {...item} no={index} className={index % 2 === 0 && index > 0 ? "ms-lg-6 mt-6" : index % 2 === 0 ? "ms-lg-6" : "ms-lg-13 mt-6"} key={item.id} />
           ))}
         </div>
 
         <div className="col-lg-6">
-          <h2 className="display-6 mb-3">How It Works?</h2>
-          <p className="lead fs-lg pe-lg-5">
-            Find out everything you need to know and more about how we create our business process models.
-          </p>
-
-          <p>
-            Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada
-            magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna
-            mollis ornare.
-          </p>
-
-          <p className="mb-6">
-            Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper.
-            Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. Vestibulum id ligula
-            porta felis.
-          </p>
-
-          <NextLink title="Learn More" href="#" className="btn btn-primary rounded-pill mb-0" />
+          <h2 className="display-6 mb-3">{howItWorks?.title}</h2>
+          <div
+            className="mb-5 lead"
+            dangerouslySetInnerHTML={{
+              __html: isMainPage
+                ? (howItWorks?.description?.substring(0, 500) || '') + (howItWorks?.description && howItWorks.description.length > 500 ? '...' : '')
+                : howItWorks?.description || '',
+            }}
+          />
+          {
+            isMainPage && (
+              <NextLink title="Devamını Gör" href="#" className="btn btn-primary rounded-pill mb-0" />
+            )
+          }
         </div>
       </div>
     </Fragment>

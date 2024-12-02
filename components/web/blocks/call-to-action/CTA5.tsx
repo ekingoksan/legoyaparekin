@@ -1,6 +1,48 @@
+"use client"
+
+import { addEmailSubscribe } from "@/actions/web/addEmailSubscribe";
+import { useToast } from '@/hooks/use-toast';
 import Puzzle from "icons/lineal/Puzzle";
+import { useForm } from "react-hook-form";
 
 export default function CTA5() {
+
+  const form = useForm({
+    defaultValues: {
+      email: "",
+    }
+  })
+
+  const { register, handleSubmit, formState: { errors } } = form;
+  const toast = useToast();
+
+  interface FormData {
+    email: string;
+  }
+
+  const onSubmit = async (data: FormData) => {
+    const formData = new FormData();
+    formData.append("email", data.email);
+    const res = await addEmailSubscribe(formData);
+
+    if(res.status === 200) {
+      form.reset();
+      return toast.toast({
+        title: 'Başarılı',
+        description: res.message,
+        variant: 'success',
+        duration: 2000,
+      })
+    }else{
+      return toast.toast({
+        title: 'Hata',
+        description: res.message,
+        variant: 'destructive',
+        duration: 2000,
+      })
+    }
+  }
+
   return (
     <section className="wrapper bg-soft-primary">
       <div className="container py-14 py-md-16 text-center">
@@ -10,9 +52,9 @@ export default function CTA5() {
               <Puzzle />
             </div>
 
-            <h2 className="display-4 mb-3">Join Our Community</h2>
+            <h2 className="display-4 mb-3">E-Posta Aboneliği</h2>
             <p className="lead fs-lg mb-6 px-xl-10 px-xxl-15">
-              We are trusted by over 5000+ clients. Join them by using our services and grow your business.
+              Bizden haberler almak için e-postanızı sistemimize kaydedin. En güncel haberler ve kampanyalardan haberdar olun.
             </p>
           </div>
         </div>
@@ -22,29 +64,25 @@ export default function CTA5() {
             <div className="newsletter-wrapper">
               <div id="mc_embed_signup2">
                 <form
-                  action=""
-                  method="post"
-                  target="_blank"
-                  className="validate"
-                  id="mc-embedded-subscribe-form2"
-                  name="mc-embedded-subscribe-form">
+                  onSubmit={handleSubmit(onSubmit)}
+                 >
                   <div id="mc_embed_signup_scroll2">
                     <div className="mc-field-group input-group form-floating">
                       <input
                         type="email"
-                        name="EMAIL"
                         id="mce-EMAIL2"
                         autoComplete="off"
-                        placeholder="Email Address"
+                        placeholder="E-Posta Adresiniz"
                         className="required email form-control"
+                        {...register("email", { required: true })}
                       />
                       <label htmlFor="mce-EMAIL2" className="text-start">
-                        Email Address
+                        E-Posta
                       </label>
 
                       <input
                         type="submit"
-                        value="Join"
+                        value="Abone Ol"
                         name="subscribe"
                         id="mc-embedded-subscribe2"
                         className="btn btn-primary"

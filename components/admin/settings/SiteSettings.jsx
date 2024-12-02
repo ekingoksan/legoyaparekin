@@ -202,22 +202,6 @@ const SiteSettings = () => {
                     onCheckedChange={(e) => form.setValue('whatsapp_live', e)}
                 />
             </div>
-            <div className="flex flex-row items-center gap-2 py-3">
-                <Label className="font-bold">Bakım Modu</Label>
-                <Switch 
-                    name="maintenance_mode"
-                    checked={form.watch('maintenance_mode')}
-                    onCheckedChange={(e) => form.setValue('maintenance_mode', e)}
-                />
-            </div>
-            <div className="grid gap-2 py-3">
-                <Label className="font-bold">Bakım Modu Mesajı</Label>
-                <SunEditorComponent 
-                    placeholder="Bakım Modu Mesajı"
-                    value={form.watch('maintenance_text')}
-                    setValue={(e) => form.setValue('maintenance_text', e)}
-                />
-            </div>
 
             <div className='flex justify-end mt-5'>
                 <Button variant="primary" size="lg">Kaydet</Button>

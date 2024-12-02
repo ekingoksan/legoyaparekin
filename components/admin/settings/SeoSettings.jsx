@@ -110,14 +110,6 @@ const SeoSettings = () => {
                     {...form.register('description')}
                 />
             </div>
-            <div className="flex flex-row items-center gap-2 py-3">
-                <Label className="font-bold">Sayfa Başlığı ile Site Başlığı Birleşsin</Label>
-                <Switch 
-                    name="page_title"
-                    checked={form.watch('page_title')}
-                    onCheckedChange={(e) => form.setValue('page_title', e)}
-                />
-            </div>
 
             <div className='flex justify-end mt-5'>
                 <Button variant="primary" size="lg">Kaydet</Button>

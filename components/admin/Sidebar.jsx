@@ -135,14 +135,14 @@ function Sidebar() {
                         </p>
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link href={adminRoutes.mailSettings} className="nav-link">
                         <i className="bi bi-circle"></i>
                         <p>
                           <span>Mail Ayarları</span>
                         </p>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
 
               </li>

@@ -14,16 +14,11 @@ import Signup from "../components/signup";
 import MiniCart from "../components/mini-cart";
 import HeaderRight from "../components/header-right";
 import FancyHeader from "../components/fancy-header";
-import BlogNavItem from "../components/blog-nav-item";
-import DemosNavItem from "../components/demos-nav-item";
-import PagesNavItem from "../components/pages-nav-item";
-import BlocksNavItem from "../components/blocks-nav-item";
-import ProjectsNavItem from "../components/projects-nav-item";
-import DocumentationNavItem from "../components/documentation-nav-item";
 import SocialLinks from "@/components/web/reuseable/SocialLinks";
 
 // ===================================================================
 interface NavbarProps {
+  isMain?: boolean;
   info?: boolean;
   cart?: boolean;
   fancy?: boolean;
@@ -33,22 +28,26 @@ interface NavbarProps {
   language?: boolean;
   stickyBox?: boolean;
   navClassName?: string;
+  email?: string;
+  phone?: string;
   button?: ReactElement;
   navOtherClass?: string;
+  logo: string;
+  socialMedia: any;
 }
 // ===================================================================
 
 export default function NavbarOne({
+  isMain = true,
   fancy,
-  button,
-  logoAlt,
   cart = false,
   info = false,
-  social = false,
   search = false,
-  language = false,
   stickyBox = true,
-  navOtherClass = "navbar-other w-100 d-flex ms-auto",
+  logo = "",
+  email,
+  phone,
+  socialMedia,
   navClassName = "navbar navbar-expand-lg center-nav transparent navbar-light"
 }: NavbarProps) {
   useNestedDropdown();
@@ -56,7 +55,6 @@ export default function NavbarOne({
   const navbarRef = useRef<HTMLElement | null>(null);
 
   // dynamically render the logo
-  const logo = sticky ? "logo-dark" : logoAlt ?? "logo-dark";
 
   // dynamically added navbar className
   const fixedClassName = "navbar navbar-expand-lg center-nav transparent navbar-light navbar-clone fixed navbar-stick";
@@ -64,8 +62,8 @@ export default function NavbarOne({
   // all main header contents
   const headerContent = (
     <Fragment>
-      <div className="navbar-brand w-100">
-        <NextLink href="/" title={<img alt="logo" src={`/img/${logo}.png`} srcSet={`/img/${logo}@2x.png 2x`} />} />
+      <div className="navbar-brand w-[250px]">
+        <NextLink href="/" title={<img alt="logo" src={`/images/site/${logo}.png`} srcSet={`/images/site/${logo}`} />} />
       </div>
 
       <div id="offcanvas-nav" data-bs-scroll="true" className="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
@@ -80,49 +78,42 @@ export default function NavbarOne({
         </div>
 
         <div className="offcanvas-body ms-lg-auto d-flex flex-column h-100">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav text-black">
             {/* ===================== demos nav item ===================== */}
-            <DemosNavItem />
-
-            {/*  ===================== pages nav item  ===================== */}
-            <PagesNavItem />
-
-            {/* ===================== projects nav item  ===================== */}
-            <ProjectsNavItem />
-
-            {/* ===================== blog nav item ===================== */}
-            <BlogNavItem />
-
-            {/* ===================== blocks nav item ===================== */}
-            <BlocksNavItem />
-
-            {/* ===================== documentation nav item ===================== */}
-            <DocumentationNavItem />
+            <li className="text-black">
+              <NextLink title="Anasayfa" className={`nav-link ${isMain == false && "!text-black"}`} href="/" />
+            </li>
+            <li>
+              <NextLink title="Biz Kimiz" className={`nav-link ${isMain == false && "!text-black"}`} href="/biz-kimiz" />
+            </li>
+            <li>
+              <NextLink title="Neler Yapıyoruz" className={`nav-link ${isMain == false && "!text-black"}`} href="/neler-yapiyoruz" />
+            </li>
+            <li>
+              <NextLink title="Referanslar" className={`nav-link ${isMain == false && "!text-black"}`} href="/referanslar" />
+            </li>
+            <li>
+              <NextLink title="Blog" className={`nav-link ${isMain == false && "!text-black"}`} href="/blog" />
+            </li>
+            <li>
+              <NextLink title="İletişim" className={`nav-link ${isMain == false && "!text-black"}`} href="/iletisim" />
+            </li>
           </ul>
 
           {/* ============= show contact info in the small device sidebar ============= */}
           <div className="offcanvas-footer d-lg-none">
             <div>
-              <NextLink title="info@email.com" className="link-inverse" href="mailto:first.last@email.com" />
+              <NextLink title={email} className="link-inverse" href={`mailto:${email}`} />
               <br />
-              <NextLink href="tel:0123456789" title="00 (123) 456 78 90" />
+              <NextLink href={`tel:${phone}`} title={phone} />
               <br />
-              <SocialLinks />
+              <SocialLinks socialMedia={socialMedia} />
             </div>
           </div>
         </div>
       </div>
-
       {/* ============= right side header content ============= */}
-      <HeaderRight
-        cart={cart}
-        info={info}
-        button={button}
-        search={search}
-        social={social}
-        language={language}
-        navOtherClass={navOtherClass}
-      />
+      <HeaderRight />
     </Fragment>
   );
 
